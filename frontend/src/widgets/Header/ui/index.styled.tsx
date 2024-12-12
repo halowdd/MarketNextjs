@@ -2,6 +2,7 @@ import { Grid, styled } from '@mui/system';
 import Link from 'next/link';
 import { ILinkContainerStyledProps } from "@/widgets/Header/config/types";
 
+
 export const HeaderContainerStyled = styled(Grid)(({ theme }) => ({
   backgroundColor: 'white',
   height: '72px',

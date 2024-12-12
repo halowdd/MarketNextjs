@@ -11,7 +11,7 @@ interface IRoute {
 export const routes: IRoute[] = [
   {
     label: "Главная",
-    path: "/home",
+    path: "/",
     Icon: <Home fontSize="medium" />,
   },
   {

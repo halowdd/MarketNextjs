@@ -1,4 +1,3 @@
-import { IProduct } from 'app/types';
 import React from 'react';
 import {
   ProductContainerStyled,
@@ -12,26 +11,29 @@ import {
   ProductFinalPriceStyled,
   ProductPriceWithoutDiscountStyled,
 } from './index.styled';
-import { HeartIcon, WithoutImage } from 'app/static';
-import { useActions, useAppSelector } from 'hooks/redux';
-import axios from 'app/axios';
-import { getFavouriteProducts } from 'store/auth/auth.slice';
-import { Button } from "../../shared/Button/ui";
-import { BUTTON_SIZE_VARIANT } from "../../shared/Button/config/enums";
+import { Button } from "@/shared/Button/ui";
+import { BUTTON_SIZE_VARIANT } from "@/shared/Button/config/enums";
 
-const CatalogueProductCard = (product: IProduct) => {
+
+const product = {
+  _id: '1',
+  title: 'test1',
+  discount: 10,
+  image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRK-Vg_IFRtnL2WQsSiJFML7R22xC8i0FL11w&s',
+  price: 1000,
+  isFavourite: false,
+}
+const CatalogueProductCard = () => {
   const { _id, image, price, title, discount } = product;
-  const { setProductToCart } = useActions();
   const finalPrice = discount ? (price / 100) * (100 - discount) : price;
 
-  const allFavouriteProducts = useAppSelector(getFavouriteProducts);
-  const isFavourite = allFavouriteProducts?.includes(product._id);
+  // const isFavourite = allFavouriteProducts?.includes(product._id);
 
   const onFavouriteClick = () => {
-    if (isFavourite) {
-      return axios.delete(`/favourites/${product._id}`);
-    }
-    return axios.post(`/favourites/${product._id}`);
+    // if (isFavourite) {
+    //   return axios.delete(`/favourites/${product._id}`);
+    // }
+    // return axios.post(`/favourites/${product._id}`);
   };
 
   return (
@@ -40,20 +42,20 @@ const CatalogueProductCard = (product: IProduct) => {
         {discount ? (
           <DiscountBadgeStyled variant="body2">{`-${discount}%`}</DiscountBadgeStyled>
         ) : null}
-        <FavouriteIconStyled isFavourite={isFavourite}>
-          <HeartIcon
-            width="20px"
-            height="20px"
-            color={isFavourite ? '#B81E1F' : '#FFFFFF'}
-            onClick={onFavouriteClick}
-          />
-        </FavouriteIconStyled>
+        {/*<FavouriteIconStyled isFavourite={isFavourite}>*/}
+        {/*  <HeartIcon*/}
+        {/*    width="20px"*/}
+        {/*    height="20px"*/}
+        {/*    color={isFavourite ? '#B81E1F' : '#FFFFFF'}*/}
+        {/*    onClick={onFavouriteClick}*/}
+        {/*  />*/}
+        {/*</FavouriteIconStyled>*/}
       </HeaderMenuProductStyled>
-      <TopSideBoxLinkToProductStyled to={_id}>
-        <ProductImageStyled id="image" src={image || WithoutImage} />
+      <TopSideBoxLinkToProductStyled href={_id}>
+        <ProductImageStyled id="image" src={image} />
       </TopSideBoxLinkToProductStyled>
       <div>
-        <ProductTitleStyled to={_id} id="title">
+        <ProductTitleStyled href={_id} id="title">
           {title}
         </ProductTitleStyled>
         <ProductPriceBlockStyled>
@@ -67,7 +69,7 @@ const CatalogueProductCard = (product: IProduct) => {
           ) : null}
         </ProductPriceBlockStyled>
         <Button
-          onClick={() => setProductToCart(product)}
+          // onClick={() => setProductToCart(product)}
           fullWidth
           size={BUTTON_SIZE_VARIANT.small}
         >

@@ -1,7 +1,8 @@
-import { styled } from '@mui/system'
-import { Typography } from '@mui/material'
-import { Link } from 'react-router-dom'
-import { IFavouriteIconStyled, IProductContainerStyled } from './types'
+import { styled } from '@mui/system';
+import { Typography } from '@mui/material';
+import Link from 'next/link';
+import { IFavouriteIconStyled, IProductContainerStyled } from './types';
+
 
 export const ProductContainerStyled = styled('div', {
   shouldForwardProp: (props) => props !== 'withImageAnimation',
@@ -21,7 +22,7 @@ export const ProductContainerStyled = styled('div', {
       opacity: 1,
     },
   },
-}))
+}));
 
 export const HeaderMenuProductStyled = styled('div')({
   position: 'absolute',
@@ -30,14 +31,14 @@ export const HeaderMenuProductStyled = styled('div')({
   width: '100%',
   justifyContent: 'space-between',
   zIndex: 1,
-})
+});
 
 export const DiscountBadgeStyled = styled(Typography)({
   backgroundColor: '#E5C958',
   borderRadius: '12px',
   padding: '2px 4px',
   width: 'fit-content',
-})
+});
 
 export const FavouriteIconStyled = styled('div', {
   shouldForwardProp: (props) => props !== 'isFavourite',
@@ -51,20 +52,20 @@ export const FavouriteIconStyled = styled('div', {
     },
     transition: '.3s ease-in-out',
   },
-}))
+}));
 
 export const TopSideBoxLinkToProductStyled = styled(Link)({
   textDecoration: 'none',
   display: 'flex',
   alignItems: 'center',
   height: '100%',
-})
+});
 
 export const ProductImageStyled = styled('img')({
   maxWidth: '200px',
   maxHeight: '200px',
   transition: '.3s ease-in-out',
-})
+});
 
 export const ProductTitleStyled = styled(Link)({
   display: 'block',
@@ -72,21 +73,21 @@ export const ProductTitleStyled = styled(Link)({
   color: 'black',
   transition: '.3s ease-in-out',
   textDecoration: 'none',
-})
+});
 
 export const ProductPriceBlockStyled = styled('div')({
   display: 'flex',
   alignItems: 'flex-end',
   gap: '8px',
-})
+});
 
 export const ProductFinalPriceStyled = styled(Typography)({
   color: '#333333',
   fontWeight: '600',
-})
+});
 
 export const ProductPriceWithoutDiscountStyled = styled(Typography)({
   color: '#999999',
   fontWeight: '400',
   textDecoration: 'line-through',
-})
+});

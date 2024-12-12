@@ -1,12 +1,15 @@
-import React from "react";
+"use client";
+import * as React from 'react';
 import { Typography } from "@mui/material";
 import { routes } from "../../routes";
-import { usePathname } from 'next/navigation';
+import { usePathname } from "next/navigation";
+import Link from 'next/link';
 import {
   HeaderContainerStyled,
   LinkContainerStyled,
   NavigationListContainerStyled
 } from "@/widgets/Header/ui/index.styled";
+import { AccountCircle } from '@mui/icons-material';
 
 
 export const Header = () => {
@@ -14,18 +17,22 @@ export const Header = () => {
 
   return (
     <HeaderContainerStyled container justifyContent="space-between" alignItems="center">
-      <h1>Market</h1>
+      <Link href="/">
+        <h1>Market</h1>
+      </Link>
       <NavigationListContainerStyled>
-        {routes.map((route, index) => {
-          const isActiveUrl = pathname ? pathname.includes(route.path) : false;
-          return (
-            <LinkContainerStyled key={index} href={route.path} isActive={isActiveUrl}>
-              {route.Icon}
-              <Typography>{route.label}</Typography>
-            </LinkContainerStyled>
-          );
-        })}
+        {routes.map((route, index) => (
+          <LinkContainerStyled key={index} href={route.path} isActive={pathname === route.path}>
+            {route.Icon}
+            <Typography>{route.label}</Typography>
+          </LinkContainerStyled>
+        ))}
       </NavigationListContainerStyled>
+      <div>
+        <Link href="/profile">
+          <AccountCircle />
+        </Link>
+      </div>
     </HeaderContainerStyled>
   );
 };

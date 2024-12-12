@@ -18,7 +18,8 @@
     "@emotion/react": "^11.14.0",
     "@emotion/cache": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@emotion/server": "^11.11.0"
+    "@emotion/server": "^11.11.0",
+    "react-hook-form": "^7.54.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.1",
